@@ -1,0 +1,47 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=788
+
+This is fairly rough at the moment but what it does is allow tokens within abbreviations that you will be prompted to replace. These are based on the following digraphs:
+
+<C-K>Cu    -  if you use this token you will be prompted at every occurence
+                    
+<C-K>MW  -  you will only be prompted once and every subsequent use
+                        of this token will be the input you entered.
+
+<C-K>TH    -  Place this where you'd like the cursor to end up.
+                        This is a bit buggy at the moment so any comments  
+                         are welcomed.
+
+<C-K><< and >>  -  If you want to provide a message as to what you're
+                                  replacing use these. The only stipulation is that the 
+                                  message be exactly 15 chars including << and >>
+
+<C-K>',    -   Because this plugin uses liblist.vim, commas need to be 
+                     entered using this digraph.
+
+                ***   Requires:  liblist.vim   ***
+http://www.vim.org/scripts/script.php?script_id=166
+
+The mapping used is <leader>et
+
+Reading the script probably explains things better than I'm doing here but here's a few egs. (These are all insert mode by the way)
+Eg1
+     type   dic
+     hit <leader>et
+     you'll see the prompt  <<   class name  >>
+     type in foo and hit <CR>
+     the string   <div class="foo">|</div>   will be inserted with the cursor at the pipe.
+(this uses the 'Cu','<<>>' and 'TH' digraphs)
+Eg2
+     type hd
+     hit <leader>et
+     you'll see the prompt  <<header level?>>
+     type in 2 and hit <CR>
+     the string <h2>|</h2> will be inserted again with the cursor at the pipe
+(this uses the 'MW','<<>>' and 'TH' digraphs)    
+
+Known issues:
+    For some reason you can't place the 'TH' digraph at the end of the string. It  executes once OK but then stops.
+
+
+As I'm not a programmer this could more than likely do with a complete overhaul. If anybody would like to help out or make suggestions, email markwoodwardATbigpond.com. I'd appreciate some input as I think the ideas pretty impressive but my executions not ;-)
+     
